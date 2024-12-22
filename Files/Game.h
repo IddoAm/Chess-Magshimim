@@ -4,7 +4,7 @@
 #include "MoveStatus.h"
 
 #include "Board.h"
-#include "GameInterface.h"
+//#include "GameInterface.h"
 
 #include "Position.h"
 
@@ -16,7 +16,7 @@ public:
 	int move(std::string instruction);
 private:
 	Board board;
-	GameInterface gameView;
+	//GameInterface gameView;
 
 	int turn;
 };

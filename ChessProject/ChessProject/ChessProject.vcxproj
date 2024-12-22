@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -141,9 +141,21 @@
   <ItemGroup>
     <ClCompile Include="..\..\Files\Chess.cpp" />
     <ClCompile Include="..\..\Files\main.cpp" />
+    <ClCompile Include="..\..\Files\Source.cpp" />
+    <ClCompile Include="..\..\Files\stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Files\Board.h" />
     <ClInclude Include="..\..\Files\Chess.h" />
+    <ClInclude Include="..\..\Files\Game.h" />
+    <ClInclude Include="..\..\Files\IGameView.h" />
+    <ClInclude Include="..\..\Files\King.h" />
+    <ClInclude Include="..\..\Files\MoveStatus.h" />
+    <ClInclude Include="..\..\Files\Piece.h" />
+    <ClInclude Include="..\..\Files\Pipe.h" />
+    <ClInclude Include="..\..\Files\Position.h" />
+    <ClInclude Include="..\..\Files\stdafx.h" />
+    <ClInclude Include="..\..\Files\targetver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
