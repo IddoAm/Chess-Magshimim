@@ -2,11 +2,12 @@
 #include <string>
 
 #include "MoveStatus.h"
-
 #include "Board.h"
+#include "Pipe.h"
 //#include "GameInterface.h"
-
 #include "Position.h"
+#include <thread>
+#include <iostream>
 
 class Game {
 public:
@@ -15,8 +16,11 @@ public:
 	void gameloop();
 	int move(std::string instruction);
 private:
-	Board board;
+	Board _board;
+	Pipe _p;
+	std::string _gameState;
 	//GameInterface gameView;
+	bool connectToGraphics();
 
 	int turn;
 };
