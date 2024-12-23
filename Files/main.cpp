@@ -1,3 +1,11 @@
+#include "Game.h"
+
+int main()
+{
+	Game game;
+	game.gameloop();
+}
+
 //// Chess 
 //#include "Chess.h"
 //

@@ -2,9 +2,9 @@
 #include <exception>
 
 class EndGameException : public std::exception {
-	char* message;
+	const char* message;
 public:
-	EndGameException(char* message) { this->message = message; }
+	EndGameException(std::string message) { this->message = message.c_str(); }
 	virtual const char* what() const throw() {
 		return message;
 	}

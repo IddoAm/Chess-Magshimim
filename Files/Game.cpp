@@ -5,14 +5,32 @@ Game::Game(std::string gameState)
 	this->_gameState = gameState;
 }
 
-void Game::gameloop()
+Game::~Game()
 {
-	
+	this->_p.close();
 }
 
-bool Game::connectToGraphics()
+void Game::gameloop()
 {
-	bool isConnect = p.connect();
+	char msgToGraphics[1024];
+	std::string msgFromGraphics;
+
+	connectToGraphics();
+
+	//send the board to graphics
+	strcpy_s(msgToGraphics, this->_gameState.c_str());
+	this->_p.sendMessageToGraphics(msgToGraphics);
+
+	do
+	{
+		msgFromGraphics = this->_p.getMessageFromGraphics();
+	}
+	while (msgFromGraphics != "quit");
+}
+
+void Game::connectToGraphics()
+{
+	bool isConnect = this->_p.connect();
 	std::string ans;
 	while (!isConnect)
 	{
@@ -22,14 +40,13 @@ bool Game::connectToGraphics()
 
 		if (ans == "0")
 		{
-			cout << "trying connect again.." << endl;
+			std::cout << "trying connect again.." << std::endl;
 			Sleep(5000);
-			isConnect = p.connect();
+			isConnect = this->_p.connect();
 		}
 		else
 		{
-			p.close();
-			return;
+			throw EndGameException("User end the connection");
 		}
 	}
 }
