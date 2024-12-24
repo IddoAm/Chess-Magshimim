@@ -11,14 +11,13 @@
 
 class Game {
 public:
-	Game(const IGameView& gameView);
-	~Game();
+	Game(std::unique_ptr<IGameView>& gameView);
 
 	void gameloop();
 	int move(std::string instruction);
 private:
 	Board _board;
-	std::unique_ptr<IGameView> gameView;
+	std::unique_ptr<IGameView> _gameView;
 
 	int turn;
 };
