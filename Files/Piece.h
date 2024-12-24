@@ -4,10 +4,11 @@
 
 class Piece {
 public:
-	Piece(bool white) : white(white) {}
+	Piece(bool white) : _white(white) {}
 
-	virtual std::vector<Position> legalMoves(const Piece* board[8][8]) const = 0;
+	bool isWhite() const { return _white; }
+	virtual std::vector<Position> legalMoves(const Piece* board[8][8], const Position& pos) const = 0;
 	virtual	char GetCharRepresentation() const = 0;
 protected:
-	bool white;
+	bool _white;
 };
