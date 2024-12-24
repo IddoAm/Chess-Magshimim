@@ -139,14 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Files\Bishop.cpp" />
     <ClCompile Include="..\..\Files\Chess.cpp" />
     <ClCompile Include="..\..\Files\Game.cpp" />
+    <ClCompile Include="..\..\Files\King.cpp" />
     <ClCompile Include="..\..\Files\main.cpp" />
     <ClCompile Include="..\..\Files\Rook.cpp" />
     <ClCompile Include="..\..\Files\stdafx.cpp" />
     <ClCompile Include="..\..\Files\TowDView.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Files\Bishop.h" />
     <ClInclude Include="..\..\Files\Board.h" />
     <ClInclude Include="..\..\Files\Chess.h" />
     <ClInclude Include="..\..\Files\EndGameException.h" />

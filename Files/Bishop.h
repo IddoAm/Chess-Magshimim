@@ -1,17 +1,9 @@
 #pragma once
 #include "Piece.h"
-
-class King : public Piece {
+class Bishop : public Piece {
 public:
-	King(bool white);
-
+	Bishop(bool white);
+	static std::vector<Position> legalMoves(const Piece* board[8][8], const Position& pos, bool white);
 	virtual std::vector<Position> legalMoves(const Piece* board[8][8], const Position& pos) const override;
 	virtual	char GetCharRepresentation() const override;
-
-	bool underCheck();
-	void setCheck(bool check);
-
-private:
-	bool _check;
-
 };
