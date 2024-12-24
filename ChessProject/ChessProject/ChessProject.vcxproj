@@ -144,6 +144,7 @@
     <ClCompile Include="..\..\Files\Game.cpp" />
     <ClCompile Include="..\..\Files\King.cpp" />
     <ClCompile Include="..\..\Files\main.cpp" />
+    <ClCompile Include="..\..\Files\Queen.cpp" />
     <ClCompile Include="..\..\Files\Rook.cpp" />
     <ClCompile Include="..\..\Files\stdafx.cpp" />
     <ClCompile Include="..\..\Files\TowDView.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="..\..\Files\Piece.h" />
     <ClInclude Include="..\..\Files\Pipe.h" />
     <ClInclude Include="..\..\Files\Position.h" />
+    <ClInclude Include="..\..\Files\Queen.h" />
     <ClInclude Include="..\..\Files\Rook.h" />
     <ClInclude Include="..\..\Files\stdafx.h" />
     <ClInclude Include="..\..\Files\targetver.h" />
