@@ -143,6 +143,7 @@
     <ClCompile Include="..\..\Files\Chess.cpp" />
     <ClCompile Include="..\..\Files\Game.cpp" />
     <ClCompile Include="..\..\Files\King.cpp" />
+    <ClCompile Include="..\..\Files\Knight.cpp" />
     <ClCompile Include="..\..\Files\main.cpp" />
     <ClCompile Include="..\..\Files\Queen.cpp" />
     <ClCompile Include="..\..\Files\Rook.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="..\..\Files\Game.h" />
     <ClInclude Include="..\..\Files\IGameView.h" />
     <ClInclude Include="..\..\Files\King.h" />
+    <ClInclude Include="..\..\Files\Knight.h" />
     <ClInclude Include="..\..\Files\MoveStatus.h" />
     <ClInclude Include="..\..\Files\Piece.h" />
     <ClInclude Include="..\..\Files\Pipe.h" />
