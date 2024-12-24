@@ -11,4 +11,5 @@ public:
 	virtual	char GetCharRepresentation() const = 0;
 protected:
 	bool _white;
+	virtual std::vector<Position> warning_moves(const Piece* board[8][8], const Position& pos) const = 0;
 };

@@ -17,5 +17,3 @@ char Queen::GetCharRepresentation() const
 {
 	return this->isWhite() ? 'Q' : 'q';
 }
-
-
