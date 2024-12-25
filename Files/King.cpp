@@ -40,12 +40,34 @@ std::vector<Position> King::legalMoves(const Piece* board[8][8], const Position&
     int x = pos.x, y = pos.y;
     for (size_t i = 0; i < 8; i++)
     {
+        if (x + _posibleMoves[i][0] < 0 || x + _posibleMoves[i][0] > 7 || y + _posibleMoves[i][1] < 0 || y + _posibleMoves[i][1] > 7)
+		{
+			continue;
+		}
 		if (!cantMove[x + _posibleMoves[i][0]][y + _posibleMoves[i][1]])
 		{
 			moves.push_back(Position(x + _posibleMoves[i][0], y + _posibleMoves[i][1]));
 		}
     }
     return moves;
+}
+
+std::vector<Position> King::warning_moves(const Piece* board[8][8], const Position& pos) const
+{
+    std::vector<Position> moves;
+
+    for (size_t i = 0; i < 8; i++)
+	{
+        if (pos.x + _posibleMoves[i][0] < 0 || pos.x + _posibleMoves[i][0] > 7 || pos.y + _posibleMoves[i][1] < 0 || pos.y + _posibleMoves[i][1] > 7)
+        {
+            continue;
+        }
+		if (board[pos.x + _posibleMoves[i][0]][pos.y + _posibleMoves[i][1]] == nullptr || board[pos.x + _posibleMoves[i][0]][pos.y + _posibleMoves[i][1]]->isWhite() == this->isWhite())
+		{
+			moves.push_back(Position(pos.x + _posibleMoves[i][0], pos.y + _posibleMoves[i][1]));
+		}
+	}
+	return moves;
 }
 
 char King::GetCharRepresentation() const
