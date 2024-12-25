@@ -9,10 +9,6 @@ Pawn::Pawn(bool white)
 
 std::vector<Position> Pawn::legalMoves(const Piece* board[8][8], const Position& pos) const
 {
-	if (pos.y == 0 || pos.y == 7)
-	{
-		throw PawnException(); //when the pawn is in the end so it will transform to queen
-	}
 	std::vector<Position> moves;
 	int x = pos.x, y = pos.y, moveDirection = this->isWhite() ? 1 : -1;
 
@@ -40,6 +36,24 @@ std::vector<Position> Pawn::legalMoves(const Piece* board[8][8], const Position&
 	{
 		moves.push_back(Position(x - 1, y + moveDirection));
 	}
+	return moves;
+}
+
+std::vector<Position> Pawn::warning_moves(const Piece* board[8][8], const Position& pos) const
+{
+	std::vector<Position> moves;
+	int x = pos.x, y = pos.y, moveDirection = this->isWhite() ? 1 : -1;
+
+	//attack
+	if (board[x + 1][y + moveDirection] == nullptr || board[x + 1][y + moveDirection]->isWhite() == this->isWhite())
+	{
+		moves.push_back(Position(x + 1, y + moveDirection));
+	}
+	if (board[x - 1][y + moveDirection] == nullptr || board[x - 1][y + moveDirection]->isWhite() == this->isWhite())
+	{
+		moves.push_back(Position(x - 1, y + moveDirection));
+	}
+	return moves;
 }
 
 char Pawn::GetCharRepresentation() const
