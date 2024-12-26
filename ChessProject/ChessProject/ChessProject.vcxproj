@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Files\Bishop.cpp" />
+    <ClCompile Include="..\..\Files\Board.cpp" />
     <ClCompile Include="..\..\Files\Chess.cpp" />
     <ClCompile Include="..\..\Files\Game.cpp" />
     <ClCompile Include="..\..\Files\King.cpp" />

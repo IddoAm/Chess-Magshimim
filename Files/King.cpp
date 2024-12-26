@@ -74,3 +74,92 @@ char King::GetCharRepresentation() const
 {
     return this->isWhite() ? 'K' : 'k';
 }
+
+//this function check if the move of a temate put the king in check
+bool King::moveIsSafe(const Piece* board[8][8], const Position& src, const Position& pos) const
+{
+    //check where relative they are.
+    int dx = src.x - pos.x, dy = src.y - pos.y;
+
+    //if the king himself moved
+    if (dx == 0 && dy == 0)
+    {
+        return true;
+    }
+    int yDir = 0, xDir = 0;
+
+    //check if it is a diagonal  ++ or --
+    if (dx == dy)
+    {
+        yDir = (dy > 0) ? 1 : -1;
+		xDir = (dx > 0) ? 1 : -1;
+	}
+    //check if it is a diagonal +-
+    else if (dx == -dy)
+	{
+		if (dx > 0)
+		{
+			yDir = -1;
+			xDir = 1;
+		}
+		else
+		{
+			yDir = 1;
+			xDir = -1;
+		}
+	}
+    //check if vertical
+    else if (dx == 0)
+    {
+		yDir = (dy > 0) ? 1 : -1;
+    }
+    //check if horizontal
+	else if (dy == 0)
+	{
+		xDir = (dx > 0) ? 1 : -1;
+	}
+    //no dir
+	else
+	{
+		return true;
+	}
+    
+    // check if the move is safe for the king
+    for (int i = 1; i < 8; i++)
+    {
+        dx += xDir;
+        dy += yDir;
+        //we got to the end of the board and there is no enemy
+        if (dx > 7 || dy > 7 || dx < 0 || dy < 0)
+		{
+			return true;
+		}
+		if (board[dx][dy] != nullptr)
+		{
+            //there is a enemy.
+            if (board[dx][dy]->isWhite() != this->isWhite())
+			{
+                char pieceRep = board[dx][dy]->GetCharRepresentation();
+                if (pieceRep == 'Q' || pieceRep == 'q')
+                {
+					return false;
+                }
+                if (xDir == 0 || yDir == 0)
+                {
+                    if (pieceRep == 'R' || pieceRep == 'r')
+                    {
+						return false;
+                    }
+                }
+                if (pieceRep == 'B' || pieceRep == 'b')
+				{
+					return false;
+				}
+			}
+            //the piece is not a threat
+			return true;
+		}
+    }
+    
+
+}
