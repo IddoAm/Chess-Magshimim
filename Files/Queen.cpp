@@ -5,7 +5,7 @@ Queen::Queen(bool white)
 {
 }
 
-std::vector<Position> Queen::legalMoves(const Piece* board[8][8], const Position& pos) const
+std::vector<Position> Queen::legalMoves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
 {
 	std::vector<Position> RookMoves = Rook::legalMoves(board, pos, this->isWhite());
 	std::vector<Position> BishopMoves = Bishop::legalMoves(board, pos, this->isWhite());
@@ -13,7 +13,7 @@ std::vector<Position> Queen::legalMoves(const Piece* board[8][8], const Position
 	return RookMoves;
 }
 
-std::vector<Position> Queen::warning_moves(const Piece* board[8][8], const Position& pos) const
+std::vector<Position> Queen::warning_moves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
 {
 std::vector<Position> RookMoves = Rook::warning_moves(board, pos, this->isWhite());
 	std::vector<Position> BishopMoves = Bishop::warning_moves(board, pos, this->isWhite());

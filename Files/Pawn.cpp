@@ -7,7 +7,7 @@ Pawn::Pawn(bool white)
 	this->_isFirstMove = true;
 }
 
-std::vector<Position> Pawn::legalMoves(const Piece* board[8][8], const Position& pos) const
+std::vector<Position> Pawn::legalMoves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
 {
 	std::vector<Position> moves;
 	int x = pos.x, y = pos.y, moveDirection = this->isWhite() ? 1 : -1;
@@ -39,7 +39,7 @@ std::vector<Position> Pawn::legalMoves(const Piece* board[8][8], const Position&
 	return moves;
 }
 
-std::vector<Position> Pawn::warning_moves(const Piece* board[8][8], const Position& pos) const
+std::vector<Position> Pawn::warning_moves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
 {
 	std::vector<Position> moves;
 	int x = pos.x, y = pos.y, moveDirection = this->isWhite() ? 1 : -1;

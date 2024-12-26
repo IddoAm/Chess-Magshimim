@@ -5,7 +5,7 @@ Rook::Rook(bool white)
 {
 }
 
-std::vector<Position> Rook::legalMoves(const Piece* board[8][8], const Position& pos, bool white)
+std::vector<Position> Rook::legalMoves(const std::unique_ptr<Piece> board[8][8], const Position& pos, bool white)
 {
 	std::vector<Position> moves;
 	int x = pos.x, y = pos.y;
@@ -76,7 +76,7 @@ std::vector<Position> Rook::legalMoves(const Piece* board[8][8], const Position&
 	return moves;
 }
 
-std::vector<Position> Rook::warning_moves(const Piece* board[8][8], const Position& pos, bool white)
+std::vector<Position> Rook::warning_moves(const std::unique_ptr<Piece> board[8][8], const Position& pos, bool white)
 {
 	std::vector<Position> moves;
 	int x = pos.x, y = pos.y;
@@ -147,12 +147,12 @@ std::vector<Position> Rook::warning_moves(const Piece* board[8][8], const Positi
 	return moves;
 }
 
-std::vector<Position> Rook::legalMoves(const Piece* board[8][8], const Position& pos) const
+std::vector<Position> Rook::legalMoves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
 {
 	return legalMoves(board, pos, this->isWhite());
 }
 
-std::vector<Position> Rook::warning_moves(const Piece* board[8][8], const Position& pos) const
+std::vector<Position> Rook::warning_moves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
 {
 	return warning_moves(board, pos, this->isWhite());
 }

@@ -5,7 +5,7 @@ Knight::Knight(bool white)
 {
 }
 
-std::vector<Position> Knight::legalMoves(const Piece* board[8][8], const Position& pos) const
+std::vector<Position> Knight::legalMoves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
 {
 	std::vector<Position> moves;
 	int posibleMoves[8][2] = { {1,2}, {1,-2}, {-1,2}, {-1,-2}, {2,1}, {2,-1}, {-2,1}, {-2,-1} };
@@ -26,7 +26,7 @@ std::vector<Position> Knight::legalMoves(const Piece* board[8][8], const Positio
 	return moves;
 }
 
-std::vector<Position> Knight::warning_moves(const Piece* board[8][8], const Position& pos) const
+std::vector<Position> Knight::warning_moves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
 {
 	std::vector<Position> moves;
 	int x = pos.x, y = pos.y;

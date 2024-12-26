@@ -6,7 +6,7 @@ King::King(bool white)
     this->_check = false;
 }
 
-std::vector<Position> King::legalMoves(const Piece* board[8][8], const Position& pos) const
+std::vector<Position> King::legalMoves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
 {
     bool cantMove[8][8] = { 0 };
     //checking where the king can move
@@ -52,7 +52,7 @@ std::vector<Position> King::legalMoves(const Piece* board[8][8], const Position&
     return moves;
 }
 
-std::vector<Position> King::warning_moves(const Piece* board[8][8], const Position& pos) const
+std::vector<Position> King::warning_moves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
 {
     std::vector<Position> moves;
 
@@ -76,7 +76,7 @@ char King::GetCharRepresentation() const
 }
 
 //this function check if the move of a temate put the king in check
-bool King::moveIsSafe(const Piece* board[8][8], const Position& src, const Position& pos) const
+bool King::moveIsSafe(const std::unique_ptr<Piece> board[8][8], const Position& src, const Position& pos) const
 {
     //check where relative they are.
     int dx = src.x - pos.x, dy = src.y - pos.y;

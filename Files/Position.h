@@ -9,4 +9,7 @@ public:
 	Position(int x, int y)
 		: x(x), y(y) {}
 
+	//operators
+	bool operator==(const Position& other) const { return x == other.x && y == other.y; }
+
 };
