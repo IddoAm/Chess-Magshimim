@@ -163,3 +163,26 @@ bool King::moveIsSafe(const std::unique_ptr<Piece> board[8][8], const Position& 
     
 
 }
+
+bool King::underCheck() const
+{
+    return _check;
+}
+
+bool King::underCheck(const std::unique_ptr<Piece> board[8][8], const Position& pos)
+{
+    if (_check)
+    {
+        std::vector<Position> moves = board[_madeCheck.x][_madeCheck.y]->legalMoves(board, pos);
+        for (size_t i = 0; i < moves.size(); i++)
+        {
+            if (moves[i] == pos)
+			{
+				return true;
+			}
+        }
+        // not under check
+        _check = false;
+        return false;
+    }
+}

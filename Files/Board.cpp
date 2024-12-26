@@ -75,11 +75,65 @@ MoveStatus Board::move(Position src, Position dst, bool whiteTurn)
 		return MoveStatus::INVALID_MOVE_NO_PLAYER_PIECE;
 	}
 
+	//get refrence to the king
+	King& kingRef = dynamic_cast<King&>(*_board[_kingPositions[!whiteTurn].x][_kingPositions[!whiteTurn].y]);
+	
 	//check if the move not create a check on team king
-	const King& kingRef = static_cast<const King&>(_board[_kingPositions[!whiteTurn].x][_kingPositions[!whiteTurn].y].get());
 	if (kingRef.moveIsSafe(_board, src, _kingPositions[!whiteTurn]) == false)
 	{
-		return MoveStatus::INVALID_MOVE_CREATE_CHECK;
+		return MoveStatus::INVALID_MOVE_CHECK_CURRENT;
 	}
 
+	//check if the move is not in the moves
+	std::vector<Position> moves = pieceRef->legalMoves(_board, src);
+	if (std::find(moves.begin(), moves.end(), dst) == moves.end())
+	{
+		return MoveStatus::INVALID_MOVE_ILLEGAL_PIECE_MOVE;
+	}
+
+	if (src == dst)
+	{
+		return MoveStatus::INVALID_MOVE_SAME_SQUARE;
+	}
+
+	//the move is valid
+	
+	// checking if the king is under a check
+	std::unique_ptr<Piece> temp = nullptr;
+	if (_board[dst.x][dst.y] != nullptr)
+	{
+		temp = std::make_unique<Piece>(*_board[dst.x][dst.y]);
+	}
+	_board[dst.x][dst.y] = std::move(_board[src.x][src.y]);
+	_board[src.x][src.y] = nullptr;
+	//check if king is steel in check
+	if (kingRef.underCheck(_board, _kingPositions[!whiteTurn]))
+	{
+		_board[src.x][src.y] = std::move(_board[dst.x][dst.y]);
+		_board[dst.x][dst.y] = std::move(temp);
+		return MoveStatus::INVALID_MOVE_KING_UNDER_CHECK;
+	}
+
+	// now checking if it create a check
+	moves = pieceRef->legalMoves(_board, dst);
+	if (std::find(moves.begin(), moves.end(), _kingPositions[whiteTurn]) != moves.end())
+	{
+		//check if it a checkmate
+		if (_board[_kingPositions[whiteTurn].x][_kingPositions[whiteTurn].y]->legalMoves(_board, _kingPositions[whiteTurn]).size() == 0)
+		{
+			return MoveStatus::VALID_MOVE_CHECKMATE;
+		}
+		else
+		{
+			dynamic_cast<King&>(*_board[_kingPositions[whiteTurn].x][_kingPositions[whiteTurn].y]).setCheck(dst);
+			return MoveStatus::VALID_MOVE_CHECK_OPPONENT;
+		}
+	}
+	if (src == _kingPositions[!whiteTurn])
+	{
+		_kingPositions[!whiteTurn] = dst;
+	}
+	//TODO: add check if the Pawn is a promotion
+	return MoveStatus::VALID_MOVE;
+	
 }

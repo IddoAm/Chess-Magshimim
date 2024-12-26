@@ -11,10 +11,12 @@ public:
 	virtual	char GetCharRepresentation() const override;
 
 	bool moveIsSafe(const std::unique_ptr<Piece> board[8][8], const Position& src, const Position& pos) const;
-	bool underCheck() const { return _check; }
-	void setCheck(bool check) { _check = check; }
+	bool underCheck() const;
+	bool underCheck(const std::unique_ptr<Piece> board[8][8], const Position& pos);
+	void setCheck(Position whereMadeCheck) { _check = true; _madeCheck = whereMadeCheck; }
 
 private:
 	bool _check;
+	Position _madeCheck;
 
 };
