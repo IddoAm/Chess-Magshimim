@@ -160,7 +160,8 @@ bool King::moveIsSafe(const std::unique_ptr<Piece> board[8][8], const Position& 
 			return true;
 		}
     }
-    
+    // it shoudn't get here
+	return true;
 
 }
 
@@ -185,4 +186,5 @@ bool King::underCheck(const std::unique_ptr<Piece> board[8][8], const Position& 
         _check = false;
         return false;
     }
+    return false;
 }

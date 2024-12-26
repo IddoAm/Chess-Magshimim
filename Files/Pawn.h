@@ -1,6 +1,5 @@
 #pragma once
 #include "Piece.h"
-#include "PawnException.h"
 
 class Pawn : public Piece {
 	bool _isFirstMove;

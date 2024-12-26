@@ -102,7 +102,7 @@ MoveStatus Board::move(Position src, Position dst, bool whiteTurn)
 	std::unique_ptr<Piece> temp = nullptr;
 	if (_board[dst.x][dst.y] != nullptr)
 	{
-		temp = std::make_unique<Piece>(*_board[dst.x][dst.y]);
+		temp = std::move(_board[dst.x][dst.y]);
 	}
 	_board[dst.x][dst.y] = std::move(_board[src.x][src.y]);
 	_board[src.x][src.y] = nullptr;

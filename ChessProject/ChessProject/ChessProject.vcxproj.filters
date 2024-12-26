@@ -18,26 +18,29 @@
     <ClCompile Include="..\..\Files\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Files\Chess.cpp">
+    <ClCompile Include="..\..\Files\Bishop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Files\stdafx.cpp">
+    <ClCompile Include="..\..\Files\Board.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Files\Game.cpp">
+    <ClCompile Include="..\..\Files\King.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Files\TowDView.cpp">
+    <ClCompile Include="..\..\Files\Knight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Files\Pawn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Files\Queen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Files\Rook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Files\Chess.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Files\IGameView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Files\King.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -53,22 +56,19 @@
     <ClInclude Include="..\..\Files\Board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Files\Game.h">
+    <ClInclude Include="..\..\Files\Bishop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Files\Pipe.h">
+    <ClInclude Include="..\..\Files\Knight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Files\stdafx.h">
+    <ClInclude Include="..\..\Files\Pawn.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Files\targetver.h">
+    <ClInclude Include="..\..\Files\Queen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Files\EndGameException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Files\TowDView.h">
+    <ClInclude Include="..\..\Files\Rook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
