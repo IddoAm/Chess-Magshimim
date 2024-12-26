@@ -149,6 +149,7 @@
     <ClCompile Include="..\..\Files\Rook.cpp" />
     <ClCompile Include="..\..\Files\Source.cpp" />
     <ClCompile Include="..\..\Files\stdafx.cpp" />
+    <ClCompile Include="..\..\Files\TowDView.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Files\Bishop.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="..\..\Files\Rook.h" />
     <ClInclude Include="..\..\Files\stdafx.h" />
     <ClInclude Include="..\..\Files\targetver.h" />
+    <ClInclude Include="..\..\Files\TowDView.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
