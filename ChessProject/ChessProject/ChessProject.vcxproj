@@ -147,18 +147,24 @@
     <ClCompile Include="..\..\Files\Pawn.cpp" />
     <ClCompile Include="..\..\Files\Queen.cpp" />
     <ClCompile Include="..\..\Files\Rook.cpp" />
+    <ClCompile Include="..\..\Files\Source.cpp" />
+    <ClCompile Include="..\..\Files\stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Files\Bishop.h" />
     <ClInclude Include="..\..\Files\Board.h" />
+    <ClInclude Include="..\..\Files\IGameView.h" />
     <ClInclude Include="..\..\Files\King.h" />
     <ClInclude Include="..\..\Files\Knight.h" />
     <ClInclude Include="..\..\Files\MoveStatus.h" />
     <ClInclude Include="..\..\Files\Pawn.h" />
     <ClInclude Include="..\..\Files\Piece.h" />
+    <ClInclude Include="..\..\Files\Pipe.h" />
     <ClInclude Include="..\..\Files\Position.h" />
     <ClInclude Include="..\..\Files\Queen.h" />
     <ClInclude Include="..\..\Files\Rook.h" />
+    <ClInclude Include="..\..\Files\stdafx.h" />
+    <ClInclude Include="..\..\Files\targetver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
