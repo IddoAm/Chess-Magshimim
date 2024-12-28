@@ -11,6 +11,8 @@ std::vector<Position> Bishop::legalMoves(const std::unique_ptr<Piece> board[8][8
 	int x = pos.x, y = pos.y;
 
 	//up right
+	x = pos.x + 1;
+	y = pos.y + 1;
 	while (x < 8 && y < 8)
 	{
 		if (board[x][y] != nullptr)
@@ -27,8 +29,8 @@ std::vector<Position> Bishop::legalMoves(const std::unique_ptr<Piece> board[8][8
 	}
 
 	//up left
-	x = pos.x;
-	y = pos.y;
+	x = pos.x - 1;
+	y = pos.y + 1;
 	while (x >= 0 && y < 8)
 	{
 		if (board[x][y] != nullptr)
@@ -45,8 +47,8 @@ std::vector<Position> Bishop::legalMoves(const std::unique_ptr<Piece> board[8][8
 	}
 
 	//down right
-	x = pos.x;
-	y = pos.y;
+	x = pos.x + 1;
+	y = pos.y - 1;
 	while (x < 8 && y >= 0)
 	{
 		if (board[x][y] != nullptr)
@@ -63,8 +65,8 @@ std::vector<Position> Bishop::legalMoves(const std::unique_ptr<Piece> board[8][8
 	}
 
 	//down left
-	x = pos.x;
-	y = pos.y;
+	x = pos.x - 1;
+	y = pos.y - 1;
 	while (x >= 0 && y >= 0)
 	{
 		if (board[x][y] != nullptr)
