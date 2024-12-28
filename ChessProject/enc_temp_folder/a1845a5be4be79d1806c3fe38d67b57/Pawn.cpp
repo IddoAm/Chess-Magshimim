@@ -4,6 +4,7 @@
 Pawn::Pawn(bool white)
 	:Piece(white)
 {
+	this->_isFirstMove = true;
 }
 
 std::vector<Position> Pawn::legalMoves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
@@ -18,8 +19,7 @@ std::vector<Position> Pawn::legalMoves(const std::unique_ptr<Piece> board[8][8],
 	}
 
 	//first move
-	int firstRow = this->isWhite() ? 1 : 6;
-	if (y == firstRow)
+	if (this->_isFirstMove)
 	{
 		if (board[x][y + (2 * moveDirection)] == nullptr)
 		{

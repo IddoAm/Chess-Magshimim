@@ -78,122 +78,77 @@ char King::GetCharRepresentation() const
 bool King::isPositionSafe(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
 {
     //check for rooks
+    std::vector<Position> moves = Rook::legalMoves(board, pos, this->isWhite());
+
+	for (size_t i = 0; i < moves.size(); i++)
+	{
+		if (board[moves[i].x][moves[i].y] != nullptr && board[moves[i].x][moves[i].y]->isWhite() != this->isWhite())
+		{
+			char c = board[moves[i].x][moves[i].y]->GetCharRepresentation();
+            if (c == 'r' || c == 'R' || c == 'q' || c == 'Q')
+            {
+				return false;
+            }
+		}
+	}
 
     //check for bishops
+    moves = Bishop::legalMoves(board, pos, this->isWhite());
+    
+    for (size_t i = 0; i < moves.size(); i++)
+	{
+		if (board[moves[i].x][moves[i].y] != nullptr && board[moves[i].x][moves[i].y]->isWhite() != this->isWhite())
+		{
+			char c = board[moves[i].x][moves[i].y]->GetCharRepresentation();
+			if (c == 'b' || c == 'B' || c == 'q' || c == 'Q')
+			{
+				return false;
+			}
+		}
+	}
 
     //check for knights
-}
-
-//this function check if the move of a temate put the king in check
-bool King::moveIsSafe(const std::unique_ptr<Piece> board[8][8], const Position& src, const Position& pos) const
-{
-    //check where relative they are.
-    int dx = src.x - pos.x, dy = src.y - pos.y;
-
-    //if the king himself moved
-    if (dx == 0 && dy == 0)
-    {
-        return true;
-    }
-    int yDir = 0, xDir = 0;
-
-    //check if it is a diagonal  ++ or --
-    if (dx == dy)
-    {
-        yDir = (dy > 0) ? 1 : -1;
-		xDir = (dx > 0) ? 1 : -1;
-	}
-    //check if it is a diagonal +-
-    else if (dx == -dy)
-	{
-		if (dx > 0)
-		{
-			yDir = -1;
-			xDir = 1;
-		}
-		else
-		{
-			yDir = 1;
-			xDir = -1;
-		}
-	}
-    //check if vertical
-    else if (dx == 0)
-    {
-		yDir = (dy > 0) ? 1 : -1;
-    }
-    //check if horizontal
-	else if (dy == 0)
-	{
-		xDir = (dx > 0) ? 1 : -1;
-	}
-    //no dir
-	else
-	{
-		return true;
-	}
+	moves = Knight::legalMoves(board, pos, this->isWhite());
     
-    // check if the move is safe for the king
-    for (int i = 1; i < 8; i++)
+    for (size_t i = 0; i < moves.size(); i++)
     {
-        dx += xDir;
-        dy += yDir;
-        //we got to the end of the board and there is no enemy
-        if (dx > 7 || dy > 7 || dx < 0 || dy < 0)
+        if (board[moves[i].x][moves[i].y] != nullptr && board[moves[i].x][moves[i].y]->isWhite() != this->isWhite())
+        {
+            char c = board[moves[i].x][moves[i].y]->GetCharRepresentation();
+            if (c == 'n' || c == 'N')
+            {
+                return false;
+            }
+        }
+    }
+
+	//check for pawns
+	int pawnDirection = this->isWhite() ? 1 : -1;
+	if (pos.y + pawnDirection >= 0 && pos.y + pawnDirection <= 7)
+	{
+		if (pos.x - 1 >= 0)
 		{
-			return true;
-		}
-		if (board[dx][dy] != nullptr)
-		{
-            //there is a enemy.
-            if (board[dx][dy]->isWhite() != this->isWhite())
+			if (board[pos.x - 1][pos.y + pawnDirection] != nullptr && board[pos.x - 1][pos.y + pawnDirection]->isWhite() != this->isWhite())
 			{
-                char pieceRep = board[dx][dy]->GetCharRepresentation();
-                if (pieceRep == 'Q' || pieceRep == 'q')
-                {
-					return false;
-                }
-                if (xDir == 0 || yDir == 0)
-                {
-                    if (pieceRep == 'R' || pieceRep == 'r')
-                    {
-						return false;
-                    }
-                }
-                if (pieceRep == 'B' || pieceRep == 'b')
+				char c = board[pos.x - 1][pos.y + pawnDirection]->GetCharRepresentation();
+				if (c == 'p' || c == 'P')
 				{
 					return false;
 				}
 			}
-            //the piece is not a threat
-			return true;
 		}
-    }
-    // it shoudn't get here
-	return true;
-
-}
-
-bool King::underCheck() const
-{
-    return _check;
-}
-
-bool King::underCheck(const std::unique_ptr<Piece> board[8][8], const Position& pos)
-{
-    if (_check)
-    {
-        std::vector<Position> moves = board[_madeCheck.x][_madeCheck.y]->legalMoves(board, pos);
-        for (size_t i = 0; i < moves.size(); i++)
-        {
-            if (moves[i] == pos)
+		if (pos.x + 1 <= 7)
+		{
+			if (board[pos.x + 1][pos.y + pawnDirection] != nullptr && board[pos.x + 1][pos.y + pawnDirection]->isWhite() != this->isWhite())
 			{
-				return true;
+				char c = board[pos.x + 1][pos.y + pawnDirection]->GetCharRepresentation();
+				if (c == 'p' || c == 'P')
+				{
+					return false;
+				}
 			}
-        }
-        // not under check
-        _check = false;
-        return false;
-    }
-    return false;
+		}
+	}
+
+	return true;
 }
