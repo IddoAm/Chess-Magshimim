@@ -10,6 +10,7 @@ std::vector<Position> Rook::legalMoves(const std::unique_ptr<Piece> board[8][8],
 	std::vector<Position> moves;
 	int x = pos.x, y = pos.y;
 
+	y = y + 1;
 	//up
 	while (y < 8)
 	{
@@ -26,7 +27,7 @@ std::vector<Position> Rook::legalMoves(const std::unique_ptr<Piece> board[8][8],
 	}
 
 	//down
-	y = pos.y;
+	y = pos.y - 1;
 	while (y >= 0)
 	{
 		if (board[x][y] != nullptr)
@@ -43,6 +44,7 @@ std::vector<Position> Rook::legalMoves(const std::unique_ptr<Piece> board[8][8],
 
 	//right
 	y = pos.y;
+	x = x + 1;
 	while (x < 8)
 	{
 		if (board[x][y] != nullptr)
@@ -58,7 +60,7 @@ std::vector<Position> Rook::legalMoves(const std::unique_ptr<Piece> board[8][8],
 	}
 
 	//left
-	x = pos.x;
+	x = pos.x - 1;
 	while (x >= 0)
 	{
 		if (board[x][y] != nullptr)

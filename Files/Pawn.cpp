@@ -45,11 +45,11 @@ std::vector<Position> Pawn::warning_moves(const std::unique_ptr<Piece> board[8][
 	int x = pos.x, y = pos.y, moveDirection = this->isWhite() ? 1 : -1;
 
 	//attack
-	if (board[x + 1][y + moveDirection] == nullptr || board[x + 1][y + moveDirection]->isWhite() == this->isWhite())
+	if (x < 7 && (board[x + 1][y + moveDirection] == nullptr || board[x + 1][y + moveDirection]->isWhite() == this->isWhite()))
 	{
 		moves.push_back(Position(x + 1, y + moveDirection));
 	}
-	if (board[x - 1][y + moveDirection] == nullptr || board[x - 1][y + moveDirection]->isWhite() == this->isWhite())
+	if (x > 0 && (board[x - 1][y + moveDirection] == nullptr || board[x - 1][y + moveDirection]->isWhite() == this->isWhite()))
 	{
 		moves.push_back(Position(x - 1, y + moveDirection));
 	}
