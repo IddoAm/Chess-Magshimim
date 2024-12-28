@@ -75,6 +75,15 @@ char King::GetCharRepresentation() const
     return this->isWhite() ? 'K' : 'k';
 }
 
+bool King::isPositionSafe(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
+{
+    //check for rooks
+
+    //check for bishops
+
+    //check for knights
+}
+
 //this function check if the move of a temate put the king in check
 bool King::moveIsSafe(const std::unique_ptr<Piece> board[8][8], const Position& src, const Position& pos) const
 {
