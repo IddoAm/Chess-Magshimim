@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\Files\Bishop.cpp" />
     <ClCompile Include="..\..\Files\Board.cpp" />
+    <ClCompile Include="..\..\Files\Game.cpp" />
     <ClCompile Include="..\..\Files\King.cpp" />
     <ClCompile Include="..\..\Files\Knight.cpp" />
     <ClCompile Include="..\..\Files\main.cpp" />
@@ -154,6 +155,8 @@
   <ItemGroup>
     <ClInclude Include="..\..\Files\Bishop.h" />
     <ClInclude Include="..\..\Files\Board.h" />
+    <ClInclude Include="..\..\Files\EndGameException.h" />
+    <ClInclude Include="..\..\Files\Game.h" />
     <ClInclude Include="..\..\Files\IGameView.h" />
     <ClInclude Include="..\..\Files\King.h" />
     <ClInclude Include="..\..\Files\Knight.h" />

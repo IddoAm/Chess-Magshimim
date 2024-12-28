@@ -28,11 +28,11 @@ std::vector<Position> Pawn::legalMoves(const std::unique_ptr<Piece> board[8][8],
 	}
 
 	//attack
-	if (board[x + 1][y + moveDirection] != nullptr && board[x + 1][y + moveDirection]->isWhite() != this->isWhite())
+	if (x +1 < 8 && board[x + 1][y + moveDirection] != nullptr && board[x + 1][y + moveDirection]->isWhite() != this->isWhite())
 	{
 		moves.push_back(Position(x + 1, y + moveDirection));
 	}
-	if (board[x - 1][y + moveDirection] != nullptr && board[x - 1][y + moveDirection]->isWhite() != this->isWhite())
+	if (x-1 >= 0 && board[x - 1][y + moveDirection] != nullptr && board[x - 1][y + moveDirection]->isWhite() != this->isWhite())
 	{
 		moves.push_back(Position(x - 1, y + moveDirection));
 	}

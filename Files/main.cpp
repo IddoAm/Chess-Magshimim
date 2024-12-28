@@ -1,5 +1,6 @@
 #include <iostream>
 #include "TowDView.h"
+#include "Game.h"
 
 int main()
 {
@@ -8,13 +9,22 @@ int main()
 	std::unique_ptr<IGameView> p;
 	if (_getch() == '1')
 	{
-		p = std::make_unique<TowDView>();
-		p->sendMessageToView("rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR1");
+		try
+		{
+			p = std::make_unique<TowDView>();
+		}
+		catch (EndGameException& e)
+		{
+			std::cout << e.what() << std::endl;
+			return 1;
+		}
 	}
 	else
 	{
 		//p = std::make_unique<ThreeDView>();
 	}
-	//Game game(p);
-	//game.gameloop();
+	Game game(p);
+	game.gameloop();
+
+	return 0;
 }

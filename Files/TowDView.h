@@ -1,7 +1,7 @@
 #pragma once
 #include "IGameView.h"
 #include "Pipe.h"
-//#include "EndGameException.h"
+#include "EndGameException.h"
 #include <thread>
 #include <iostream>
 

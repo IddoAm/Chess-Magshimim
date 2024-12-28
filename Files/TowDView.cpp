@@ -20,13 +20,12 @@ TowDView::TowDView()
 		if (ans == "0")
 		{
 			std::cout << "trying connect again.." << std::endl;
-			Sleep(5000);
+			Sleep(500);
 			isConnect = _p.connect();
 		}
 		else
 		{
-			//throw EndGameException("User end the connection"); TODO: add later
-			return;
+			throw EndGameException("User end the connection");
 		}
 	}
 

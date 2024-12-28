@@ -62,6 +62,11 @@ std::string Board::toString()
 
 MoveStatus Board::move(Position src, Position dst, bool whiteTurn)
 {
+	//check if the move is in the board
+	if (src.x < 0 || src.x > 7 || src.y < 0 || src.y > 7 || dst.x < 0 || dst.x > 7 || dst.y < 0 || dst.y > 7)
+	{
+		return MoveStatus::INVALID_MOVE_ILLEGAL_INDEX;
+	}
 	//check if it can move the piece
 	if (_board[src.x][src.y] == nullptr)
 	{
@@ -76,14 +81,6 @@ MoveStatus Board::move(Position src, Position dst, bool whiteTurn)
 	}
 
 	//get refrence to the king
-	King& kingRef = dynamic_cast<King&>(*_board[_kingPositions[!whiteTurn].x][_kingPositions[!whiteTurn].y]);
-	
-	//check if the move not create a check on team king
-	if (kingRef.moveIsSafe(_board, src, _kingPositions[!whiteTurn]) == false)
-	{
-		return MoveStatus::INVALID_MOVE_CHECK_CURRENT;
-	}
-
 	//check if the move is not in the moves
 	std::vector<Position> moves = pieceRef->legalMoves(_board, src);
 	if (std::find(moves.begin(), moves.end(), dst) == moves.end())
@@ -95,6 +92,15 @@ MoveStatus Board::move(Position src, Position dst, bool whiteTurn)
 	{
 		return MoveStatus::INVALID_MOVE_SAME_SQUARE;
 	}
+
+	King& kingRef = dynamic_cast<King&>(*_board[_kingPositions[!whiteTurn].x][_kingPositions[!whiteTurn].y]);
+	
+	//check if the move not create a check on team king
+	if (kingRef.moveIsSafe(_board, src, _kingPositions[!whiteTurn]) == false)
+	{
+		return MoveStatus::INVALID_MOVE_CHECK_CURRENT;
+	}
+
 
 	//the move is valid
 	
@@ -115,7 +121,7 @@ MoveStatus Board::move(Position src, Position dst, bool whiteTurn)
 	}
 
 	// now checking if it create a check
-	moves = pieceRef->legalMoves(_board, dst);
+	moves = _board[dst.x][dst.y]->legalMoves(_board, dst);
 	if (std::find(moves.begin(), moves.end(), _kingPositions[whiteTurn]) != moves.end())
 	{
 		//check if it a checkmate
