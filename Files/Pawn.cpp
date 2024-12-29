@@ -39,22 +39,6 @@ std::vector<Position> Pawn::legalMoves(const std::unique_ptr<Piece> board[8][8],
 	return moves;
 }
 
-std::vector<Position> Pawn::warning_moves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
-{
-	std::vector<Position> moves;
-	int x = pos.x, y = pos.y, moveDirection = this->isWhite() ? 1 : -1;
-
-	//attack
-	if (x < 7 && (board[x + 1][y + moveDirection] == nullptr || board[x + 1][y + moveDirection]->isWhite() == this->isWhite()))
-	{
-		moves.push_back(Position(x + 1, y + moveDirection));
-	}
-	if (x > 0 && (board[x - 1][y + moveDirection] == nullptr || board[x - 1][y + moveDirection]->isWhite() == this->isWhite()))
-	{
-		moves.push_back(Position(x - 1, y + moveDirection));
-	}
-	return moves;
-}
 
 char Pawn::GetCharRepresentation() const
 {

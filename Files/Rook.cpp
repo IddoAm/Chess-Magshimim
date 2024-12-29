@@ -78,85 +78,9 @@ std::vector<Position> Rook::legalMoves(const std::unique_ptr<Piece> board[8][8],
 	return moves;
 }
 
-std::vector<Position> Rook::warning_moves(const std::unique_ptr<Piece> board[8][8], const Position& pos, bool white)
-{
-	std::vector<Position> moves;
-	int x = pos.x, y = pos.y;
-
-	//up
-	while (y < 8)
-	{
-		if (board[x][y] != nullptr)
-		{
-			if (board[x][y]->isWhite() == white)
-			{
-				moves.push_back(Position(x, y));
-			}
-			break;
-		}
-		moves.push_back(Position(x, y));
-		y++;
-	}
-
-	//down
-	y = pos.y;
-	while (y >= 0)
-	{
-		if (board[x][y] != nullptr)
-		{
-			if (board[x][y]->isWhite() == white)
-			{
-				moves.push_back(Position(x, y));
-			}
-			break;
-		}
-		moves.push_back(Position(x, y));
-		y--;
-	}
-
-	//right
-	y = pos.y;
-	while (x < 8)
-	{
-		if (board[x][y] != nullptr)
-		{
-			if (board[x][y]->isWhite() == white)
-			{
-				moves.push_back(Position(x, y));
-			}
-			break;
-		}
-		moves.push_back(Position(x, y));
-		x++;
-	}
-
-	//left
-	x = pos.x;
-	while (x >= 0)
-	{
-		if (board[x][y] != nullptr)
-		{
-			if (board[x][y]->isWhite() == white)
-			{
-				moves.push_back(Position(x, y));
-			}
-			break;
-		}
-		moves.push_back(Position(x, y));
-		x--;
-	}
-
-	return moves;
-}
-
 std::vector<Position> Rook::legalMoves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
 {
 	return legalMoves(board, pos, this->isWhite());
-}
-
-std::vector<Position> Rook::warning_moves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
-{
-	return warning_moves(board, pos, this->isWhite());
 }
 
 char Rook::GetCharRepresentation() const

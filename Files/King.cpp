@@ -3,7 +3,6 @@
 King::King(bool white)
     : Piece(white)
 {
-    this->_check = false;
 }
 
 std::vector<Position> King::legalMoves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
@@ -25,23 +24,6 @@ std::vector<Position> King::legalMoves(const std::unique_ptr<Piece> board[8][8],
     return moves;
 }
 
-std::vector<Position> King::warning_moves(const std::unique_ptr<Piece> board[8][8], const Position& pos) const
-{
-    std::vector<Position> moves;
-
-    for (size_t i = 0; i < 8; i++)
-	{
-        if (pos.x + _posibleMoves[i][0] < 0 || pos.x + _posibleMoves[i][0] > 7 || pos.y + _posibleMoves[i][1] < 0 || pos.y + _posibleMoves[i][1] > 7)
-        {
-            continue;
-        }
-		if (board[pos.x + _posibleMoves[i][0]][pos.y + _posibleMoves[i][1]] == nullptr || board[pos.x + _posibleMoves[i][0]][pos.y + _posibleMoves[i][1]]->isWhite() == this->isWhite())
-		{
-			moves.push_back(Position(pos.x + _posibleMoves[i][0], pos.y + _posibleMoves[i][1]));
-		}
-	}
-	return moves;
-}
 
 char King::GetCharRepresentation() const
 {
