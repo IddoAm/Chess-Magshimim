@@ -106,11 +106,19 @@ MoveStatus Board::move(Position src, Position dst, bool whiteTurn)
 	}
 	_board[dst.x][dst.y] = std::move(_board[src.x][src.y]);
 	_board[src.x][src.y] = nullptr;
+
+	//check if the king has moved
+	if (src == _kingPositions[!whiteTurn])
+	{
+		_kingPositions[!whiteTurn] = dst;
+	}
+
 	//check if king is steel in check
 	if (!kingRef.isPositionSafe(_board, _kingPositions[!whiteTurn]))
 	{
 		_board[src.x][src.y] = std::move(_board[dst.x][dst.y]);
 		_board[dst.x][dst.y] = std::move(temp);
+
 		//it was in check before
 		if (isCheck)
 		{
@@ -119,11 +127,7 @@ MoveStatus Board::move(Position src, Position dst, bool whiteTurn)
 		return MoveStatus::INVALID_MOVE_CHECK_CURRENT;
 	}
 
-	//check if the king has moved
-	if (src == _kingPositions[!whiteTurn])
-	{
-		_kingPositions[!whiteTurn] = dst;
-	}
+	
 
 	// now checking if it create a check
 	King& opKingRef = dynamic_cast<King&> (*_board[_kingPositions[whiteTurn].x][_kingPositions[whiteTurn].y]);

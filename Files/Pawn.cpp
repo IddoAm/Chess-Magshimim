@@ -21,7 +21,7 @@ std::vector<Position> Pawn::legalMoves(const std::unique_ptr<Piece> board[8][8],
 	int firstRow = this->isWhite() ? 1 : 6;
 	if (y == firstRow)
 	{
-		if (board[x][y + (2 * moveDirection)] == nullptr)
+		if (board[x][y + (2 * moveDirection)] == nullptr && board[x][y + moveDirection] == nullptr)
 		{
 			moves.push_back(Position(x, y + (2 * moveDirection)));
 		}
